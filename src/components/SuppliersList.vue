@@ -12,6 +12,7 @@
 
 <script>
 import SupplierUnique from './SupplierUnique.vue'
+import { format } from 'timeago.js';
 
 export default {
     name: "SuppliersList",
@@ -22,13 +23,13 @@ export default {
       id: 1,
       name: "Fournisseur 1",
       status: true,
-      checkedAt: new Date().toLocaleString()
+      checkedAt: format(new Date())
     },
     {
       id: 2,
       name: "Fournisseur 2",
       status: false,
-      checkedAt: new Date().toLocaleString()
+      checkedAt: format(new Date())
     }
   ]
 }
