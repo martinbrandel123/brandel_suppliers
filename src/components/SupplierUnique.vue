@@ -16,7 +16,7 @@ export default {
         name : String,
         status : Boolean,
         checkedAt : String,
-    }
+    },
 }
 </script>
 

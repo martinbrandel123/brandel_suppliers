@@ -11,6 +11,7 @@
 
 <script>
 import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
+const axios = require('axios').default;
 
 export default {
     name: "SuppliersMap",
@@ -25,19 +26,21 @@ export default {
       zoom: 6,
       center: [46.5322, 2.9482],
       bounds: null,
-      suppliers: [
-        {
-            id: 1,
-            latitude: 45.184972,
-            longitude: 5.765900
-        },
-        {
-            id: 2,
-            latitude: 13.710872,
-            longitude: 100.602106
-        }]
+      suppliers: [],
+      loading: false,
+      error: null,
     };
-  }
+  },
+      created (){
+      axios
+        .get('https://api-suppliers.herokuapp.com/api/suppliers')
+        .then(result => {
+            this.suppliers = result.data
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
 }
 </script>
 

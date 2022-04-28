@@ -12,30 +12,33 @@
 
 <script>
 import SupplierUnique from './SupplierUnique.vue'
-import { format } from 'timeago.js';
+//import { format } from 'timeago.js';
+const axios = require('axios').default;
+
 
 export default {
     name: "SuppliersList",
-    data() {
+    data () {
         return {
-  suppliers: [
-    {
-      id: 1,
-      name: "Fournisseur 1",
-      status: true,
-      checkedAt: format(new Date())
+            suppliers: [], // au début la liste des fournisseurs est vide
+            loading: false,
+            error: null,
+        }
     },
-    {
-      id: 2,
-      name: "Fournisseur 2",
-      status: false,
-      checkedAt: format(new Date())
-    }
-  ]
-}
+    created (){
+        axios
+            .get('https://api-suppliers.herokuapp.com/api/suppliers')
+            .then(result => {
+                this.suppliers = result.data
+            })
+            .catch(error => {
+                console.log(error)
+            })
     },
     components: {
     SupplierUnique
-    }
+    },
+    
 }
 </script>
+
