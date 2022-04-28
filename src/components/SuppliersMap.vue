@@ -45,5 +45,7 @@ export default {
     #SuppliersMap{
         width: 600px;
         margin: 50px auto;
+        border: 5px pink solid;
+        border-radius: 10px;
     }
 </style>
