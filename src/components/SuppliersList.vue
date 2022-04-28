@@ -1,12 +1,12 @@
 <template>
     <div id="SuppliersList">
-        <!-- <router-link to="/Supplier">Supplier</router-link>  -->
         <SupplierUnique 
-        v-bind:name="name"
-        v-bind:status="status"
-        v-bind:checkedAt="checkedAt"
+        v-for="supplier in suppliers"
+        :key="supplier.id"
+        v-bind:name="supplier.name"
+        v-bind:status="supplier.status"
+        v-bind:checkedAt="supplier.checkedAt"
         />
-        <!-- <router-view/> -->
     </div>
 </template>
 
@@ -17,10 +17,21 @@ export default {
     name: "SuppliersList",
     data() {
         return {
-            name: 'Mon fournisseur',
-            status: true, // est ce qu'il y a du stock
-            checkedAt: new Date().toLocaleString()  // date de la dernière mise à jour du stock
-        }
+  suppliers: [
+    {
+      id: 1,
+      name: "Fournisseur 1",
+      status: true,
+      checkedAt: new Date().toLocaleString()
+    },
+    {
+      id: 2,
+      name: "Fournisseur 2",
+      status: false,
+      checkedAt: new Date().toLocaleString()
+    }
+  ]
+}
     },
     components: {
     SupplierUnique

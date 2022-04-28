@@ -1,11 +1,11 @@
 <template>
     <div id="SuppliersUnique">
-        <hr>
+        <div class="Supplier-cart">
             <h1>{{ name }}</h1>
             <h3 v-if="status" v-bind:class="{green:status}">A du stock ? OK</h3>
             <h3 v-if="!status" v-bind:class="{red:!status}">A du stock ? KO</h3>
             <h5>{{ checkedAt }}</h5>
-        <hr>
+        </div>
     </div>
 </template>
 
@@ -28,4 +28,10 @@ export default {
     .green {
         color: green;
     }
+    .Supplier-cart{
+        width: 600px;
+        border: 1px solid black;
+        margin: 15px auto;
+    }
+
 </style>
