@@ -1,11 +1,43 @@
 <template>
     <div id="SuppliersMap">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22496.994335038016!2d5.720940546074626!3d45.184580170597144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478af45f835e757f%3A0x4c72092b1011511d!2sH%C3%B4tel%20de%20Police!5e0!3m2!1sfr!2sfr!4v1651060332900!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         <div style="height: 60vh">
+            <LMap :zoom="zoom" :center="center">
+            <LTileLayer :url="url"></LTileLayer>
+            <!-- <LMarker :lat-lng="[47.413220, -1.219482]"></LMarker>
+            <LMarker :lat-lng="[46.193220, 4.82]"></LMarker>
+            <LMarker :lat-lng="[45.193220, 6.82]"></LMarker>
+            <LMarker :lat-lng="[47.03220, -0.9482]"></LMarker>
+            <LMarker :lat-lng="[46.03220, 2.9482]"></LMarker> -->
+            </LMap>
+        </div>
     </div>
 </template>
 
 <script>
+import { LMap, LTileLayer} from "vue2-leaflet";
+// import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
+
 export default {
     name: "SuppliersMap",
+    components: {
+    LMap,
+    LTileLayer,
+   // LMarker
+  },
+  data() {
+    return {
+      url: "https://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      zoom: 6,
+      center: [46.5322, 2.9482],
+      bounds: null
+    };
+  }
 }
 </script>
+
+<style scoped>
+    #SuppliersMap{
+        width: 600px;
+        margin: 50px auto;
+    }
+</style>
